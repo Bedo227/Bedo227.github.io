@@ -261,3 +261,51 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+// ============================================
+// Preloader Animation
+// ============================================
+document.addEventListener("DOMContentLoaded", () => {
+    const preloader = document.getElementById('preloader');
+    const loaderBar = document.getElementById('loader-bar');
+    const loaderText = document.getElementById('loader-text');
+    
+    if (preloader && loaderBar && loaderText) {
+        // Disable scroll during loading
+        document.body.style.overflow = "hidden";
+        
+        let progress = 0;
+        
+        const updateLoader = () => {
+            // Random increment between 1 and 6 for a dynamic feel
+            const increment = Math.floor(Math.random() * 6) + 1;
+            progress += increment;
+
+            if (progress >= 100) {
+                progress = 100;
+                loaderBar.style.width = '100%';
+                loaderText.innerText = '100';
+
+                // Add a small delay at 100% before fading out
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        // Re-enable scroll
+                        document.body.style.overflow = '';
+                    }, 700); // Matches the duration-700 from Tailwind transition
+                }, 500);
+            } else {
+                loaderBar.style.width = progress + '%';
+                loaderText.innerText = progress;
+
+                // Random timeout for the next tick to make it feel human/glitchy
+                const nextTick = Math.floor(Math.random() * 60) + 20;
+                setTimeout(updateLoader, nextTick);
+            }
+        };
+        
+        // Start loader after a tiny delay
+        setTimeout(updateLoader, 200);
+    }
+});
+

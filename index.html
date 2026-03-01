@@ -50,6 +50,17 @@
 </head>
 <body class="font-['Inter'] bg-fox-beige text-fox-text">
     
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[5000] bg-fox-beige flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="glitch-wrapper mb-8">
+            <div class="glitch text-4xl sm:text-6xl font-bold text-fox-title" data-text="Obed ADIDO">Obed ADIDO</div>
+        </div>
+        <div class="w-64 h-1 bg-gray-200 rounded-full overflow-hidden mb-4">
+            <div id="loader-bar" class="h-full bg-fox-orange w-0 transition-all duration-300 ease-out"></div>
+        </div>
+        <div id="loader-text" class="text-fox-orange-dark font-medium text-lg">0%</div>
+    </div>
+
     <!-- Navigation -->
     <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
