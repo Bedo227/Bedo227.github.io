@@ -1,4 +1,6 @@
-/* Custom Styles */
+/* Custom Styles - Portfolio Obed ADIDO */
+
+/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +13,8 @@ html {
 
 body {
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom Animations */
@@ -45,102 +49,6 @@ body {
     }
 }
 
-.animate-fade-in-down {
-    animation: fade-in-down 1s ease-out;
-}
-
-.animate-fade-in-up {
-    animation: fade-in-up 1s ease-out 0.2s both;
-}
-
-.animate-pulse-slow {
-    animation: pulse-slow 4s ease-in-out infinite;
-}
-
-/* Navigation Active State */
-.nav-link {
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, #3b82f6, #9333ea);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-
-/* Smooth Scroll Offset for Fixed Nav */
-section {
-    scroll-margin-top: 80px;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #1f2937;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #3b82f6, #9333ea);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #2563eb, #7c3aed);
-}
-
-/* Loading Animation */
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.fa-spin {
-    animation: spin 1s linear infinite;
-}
-
-/* Form Validation States */
-input:invalid:not(:placeholder-shown),
-textarea:invalid:not(:placeholder-shown) {
-    border-color: #ef4444;
-}
-
-input:valid:not(:placeholder-shown),
-textarea:valid:not(:placeholder-shown) {
-    border-color: #10b981;
-}
-
-/* Gradient Text */
-.gradient-text {
-    background: linear-gradient(to right, #3b82f6, #9333ea);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Project Cards Hover Effect */
-.project-card {
-    transition: all 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-/* Skill Cards Animation */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -150,52 +58,117 @@ textarea:valid:not(:placeholder-shown) {
     }
 }
 
-/* Button Ripple Effect */
+.animate-fade-in-down {
+    animation: fade-in-down 0.8s ease-out;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out 0.2s both;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Navigation Styles */
+.nav-link {
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #10b981;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Scroll margin for fixed nav */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #10b981, #06b6d4);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #059669, #0891b2);
+}
+
+/* Form Styles */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #6b7280;
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+    color: #10b981;
+}
+
+/* Card Hover Effects */
+.project-card,
+.skill-card {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover,
+.skill-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Button Styles */
 button {
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
-button:active::before {
-    width: 300px;
-    height: 300px;
-}
-
-/* Responsive Design Adjustments */
-@media (max-width: 768px) {
-    .text-5xl {
-        font-size: 2.5rem;
-    }
-    
-    .text-7xl {
-        font-size: 3.5rem;
-    }
-}
-
-/* Loading Spinner for Form */
-.spinner {
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-top: 3px solid white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+/* Loading Spinner */
+.fa-spin {
     animation: spin 1s linear infinite;
 }
 
-/* Success and Error Messages */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Form Messages */
 .success-message {
     background-color: rgba(16, 185, 129, 0.1);
     border: 1px solid #10b981;
@@ -214,28 +187,73 @@ button:active::before {
     margin-top: 1rem;
 }
 
-/* Particle Background Effect (Optional) */
-.particle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .text-5xl {
+        font-size: 2.5rem;
+    }
+    
+    .text-7xl {
+        font-size: 3rem;
+    }
+    
+    .text-6xl {
+        font-size: 2.75rem;
+    }
 }
 
 /* Smooth Transitions */
-* {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+a, button, input, textarea, select {
+    transition: all 0.3s ease;
 }
 
-/* Hide elements until ready */
-.fade-in-element {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+/* Focus Visible for Accessibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
 }
 
-.fade-in-element.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* Image Optimization */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Selection Styling */
+::selection {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: #ffffff;
+}
+
+/* Print Styles */
+@media print {
+    nav, 
+    #scroll-top,
+    .animate-pulse-slow {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* Scroll Progress Bar */
@@ -249,3 +267,26 @@ button:active::before {
     transition: width 0.1s ease;
 }
 
+/* Hero Section Enhancements */
+#home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Method Section - Timeline Effect */
+#method .relative::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    width: 20px;
+    height: 2px;
+    background: linear-gradient(to right, #3b82f6, transparent);
+}
+
+@media (max-width: 768px) {
+    #method .relative::before {
+        display: none;
+    }
+}
