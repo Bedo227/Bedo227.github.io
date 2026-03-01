@@ -83,7 +83,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: #10b981;
+    background: #E07A3F;
     transition: width 0.3s ease;
 }
 
@@ -103,16 +103,16 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1e293b;
+    background: #FBF6EE;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #10b981, #06b6d4);
+    background: linear-gradient(to bottom, #E07A3F, #C65A1E);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #059669, #0891b2);
+    background: linear-gradient(to bottom, #C65A1E, #A84B15);
 }
 
 /* Form Styles */
@@ -120,8 +120,8 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: #E07A3F;
+    box-shadow: 0 0 0 3px rgba(224, 122, 63, 0.1);
 }
 
 input::placeholder,
@@ -131,7 +131,7 @@ textarea::placeholder {
 
 /* Gradient Text Utility */
 .gradient-text {
-    color: #10b981;
+    color: #E07A3F;
 }
 
 /* Card Hover Effects */
@@ -170,9 +170,9 @@ button:disabled {
 
 /* Form Messages */
 .success-message {
-    background-color: rgba(16, 185, 129, 0.1);
-    border: 1px solid #10b981;
-    color: #10b981;
+    background-color: rgba(34, 197, 94, 0.1);
+    border: 1px solid #22c55e;
+    color: #16a34a;
     padding: 1rem;
     border-radius: 0.5rem;
     margin-top: 1rem;
