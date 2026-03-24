@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obed ADIDO | Développeur Web & Mobile Fullstack  Laravel - Applications sécurisées & déployées</title>
-    
+    <title>Obed ADIDO | Développeur Web & Mobile Fullstack — Laravel · React · Déploiement</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Développeur Web & Mobile Fullstack spécialisé Laravel, PHP, MySQL, React, Next.js. Conception, développement et déploiement d'applications web sécurisées en production. API REST, sécurité web, VPS Linux. Disponible CDI, alternance ou mission.">
-    <meta name="keywords" content="Développeur Web & Mobile Fullstack, laravel, php, mysql, react, next.js, api rest, sécurité web, déploiement vps, développeur junior, axios, tailwind css, javascript">
+    <meta name="description" content="Développeur Web & Mobile Fullstack spécialisé Laravel, PHP, MySQL, React, Next.js. Conception, développement et déploiement d'applications web sécurisées en production.">
+    <meta name="keywords" content="Développeur Web & Mobile Fullstack, laravel, php, mysql, react, next.js, api rest, sécurité web, déploiement vps, développeur junior">
     <meta name="author" content="Obed ADIDO">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="Obed ADIDO | Développeur Web & Mobile Fullstack Laravel">
     <meta property="og:description" content="Applications web sécurisées, développées et déployées en production.">
     <meta property="og:type" content="website">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -23,461 +23,378 @@
             theme: {
                 extend: {
                     colors: {
-                        'fox-orange': '#E07A3F',
-                        'fox-orange-dark': '#C65A1E',
-                        'fox-orange-light': '#F2A06B',
-                        'fox-beige': '#FBF6EE',
-                        'fox-title': '#1F1F1F',
-                        'fox-text': '#4A4A4A',
-                        'fox-muted': '#8C8C8C',
+                        'dark-primary': '#0a0a0f',
+                        'dark-secondary': '#12121a',
+                        'dark-card': '#1a1a2e',
+                        'accent': '#6C63FF',
+                        'accent-glow': '#7B73FF',
+                        'accent-teal': '#00D4AA',
+                        'accent-red': '#FF6B6B',
+                        'txt-primary': '#E8E8F0',
+                        'txt-muted': '#8888A0',
+                        'txt-heading': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        'heading': ['"Space Grotesk"', 'sans-serif'],
+                        'body': ['"Inter"', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
-<body class="font-['Inter'] bg-fox-beige text-fox-text">
-    
+<body class="font-body bg-dark-primary text-txt-primary">
+
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[5000] bg-fox-beige flex flex-col items-center justify-center transition-opacity duration-700">
-        <div class="glitch-wrapper mb-8">
-            <div class="glitch text-4xl sm:text-6xl font-bold text-fox-title" data-text="Obed ADIDO">Obed ADIDO</div>
-        </div>
-        <div class="w-64 h-1 bg-gray-200 rounded-full overflow-hidden mb-4">
-            <div id="loader-bar" class="h-full bg-fox-orange w-0 transition-all duration-300 ease-out"></div>
-        </div>
-        <div id="loader-text" class="text-fox-orange-dark font-medium text-lg">0%</div>
+    <div id="preloader">
+        <div class="preloader-ring"></div>
+        <div class="font-heading text-2xl sm:text-3xl font-bold text-txt-heading tracking-tight">Obed ADIDO</div>
+        <p class="text-txt-muted text-sm mt-2">Chargement...</p>
     </div>
 
+    <!-- Scroll Progress -->
+    <div id="scroll-progress" style="width:0%"></div>
+
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+    <nav class="fixed w-full nav-glass z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <a href="#home" class="text-xl sm:text-2xl font-bold text-fox-orange hover:text-fox-orange-dark transition-colors">
-                        Obed ADIDO
+                    <a href="#home" class="font-heading text-xl sm:text-2xl font-bold gradient-text">
+                        OA<span class="text-txt-muted font-normal">.</span>
                     </a>
                 </div>
-                
+
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6 lg:space-x-8">
-                        <a href="#home" class="nav-link text-fox-text hover:text-fox-orange transition-colors duration-300">Accueil</a>
-                        <a href="#about" class="nav-link text-fox-text hover:text-fox-orange transition-colors duration-300">À Propos</a>
-                        <a href="#skills" class="nav-link text-fox-text hover:text-fox-orange transition-colors duration-300">Compétences</a>
-                        <a href="#projects" class="nav-link text-fox-text hover:text-fox-orange transition-colors duration-300">Projets</a>
-                        <a href="#method" class="nav-link text-fox-text hover:text-fox-orange transition-colors duration-300">Méthode</a>
-                        <a href="#contact" class="nav-link text-fox-text hover:text-fox-orange transition-colors duration-300">Contact</a>
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link">Accueil</a>
+                        <a href="#about" class="nav-link">À Propos</a>
+                        <a href="#skills" class="nav-link">Compétences</a>
+                        <a href="#projects" class="nav-link">Projets</a>
+                        <a href="#method" class="nav-link">Méthode</a>
+                        <a href="#contact" class="nav-link">Contact</a>
                     </div>
                 </div>
-                
+
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-fox-text hover:text-fox-orange focus:outline-none p-2" aria-label="Menu">
+                    <button id="mobile-menu-button" class="text-txt-muted hover:text-accent focus:outline-none p-2" aria-label="Menu">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <div class="px-4 pt-2 pb-4 space-y-1">
-                <a href="#home" class="block px-3 py-3 text-fox-text hover:text-fox-orange hover:bg-fox-beige rounded-lg transition-colors duration-300">Accueil</a>
-                <a href="#about" class="block px-3 py-3 text-fox-text hover:text-fox-orange hover:bg-fox-beige rounded-lg transition-colors duration-300">À Propos</a>
-                <a href="#skills" class="block px-3 py-3 text-fox-text hover:text-fox-orange hover:bg-fox-beige rounded-lg transition-colors duration-300">Compétences</a>
-                <a href="#projects" class="block px-3 py-3 text-fox-text hover:text-fox-orange hover:bg-fox-beige rounded-lg transition-colors duration-300">Projets</a>
-                <a href="#method" class="block px-3 py-3 text-fox-text hover:text-fox-orange hover:bg-fox-beige rounded-lg transition-colors duration-300">Méthode</a>
-                <a href="#contact" class="block px-3 py-3 text-fox-text hover:text-fox-orange hover:bg-fox-beige rounded-lg transition-colors duration-300">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden" style="background:rgba(10,10,15,0.95);backdrop-filter:blur(20px)">
+            <div class="px-4 pt-2 pb-4 space-y-1 border-t border-white/5">
+                <a href="#home" class="block px-3 py-3 text-txt-muted hover:text-accent rounded-lg transition-colors">Accueil</a>
+                <a href="#about" class="block px-3 py-3 text-txt-muted hover:text-accent rounded-lg transition-colors">À Propos</a>
+                <a href="#skills" class="block px-3 py-3 text-txt-muted hover:text-accent rounded-lg transition-colors">Compétences</a>
+                <a href="#projects" class="block px-3 py-3 text-txt-muted hover:text-accent rounded-lg transition-colors">Projets</a>
+                <a href="#method" class="block px-3 py-3 text-txt-muted hover:text-accent rounded-lg transition-colors">Méthode</a>
+                <a href="#contact" class="block px-3 py-3 text-txt-muted hover:text-accent rounded-lg transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section - Impact immédiat -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-fox-beige">
-        <div class="absolute inset-0 opacity-20">
-            <div class="animate-pulse-slow absolute top-20 left-20 w-72 h-72 bg-fox-orange-light rounded-full filter blur-3xl"></div>
-            <div class="animate-pulse-slow absolute bottom-20 right-20 w-96 h-96 bg-fox-orange rounded-full filter blur-3xl"></div>
+    <!-- ===================== HERO ===================== -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Mesh Gradient -->
+        <div class="hero-mesh">
+            <div class="mesh-blob"></div>
+            <div class="mesh-blob"></div>
+            <div class="mesh-blob"></div>
         </div>
-        
+        <!-- Particles -->
+        <canvas id="hero-particles"></canvas>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
             <div class="text-center">
-                <div class="mb-8 animate-fade-in-down">
-                    <!-- Badge disponibilité -->
-                    <div class="inline-flex items-center gap-2 bg-white border border-fox-orange/30 text-fox-orange px-4 py-2 rounded-full text-sm mb-6">
-                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        Disponible pour opportunités
+                <div class="mb-8">
+                    <!-- Availability Badge -->
+                    <div class="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full text-sm mb-8">
+                        <span class="w-2 h-2 bg-accent-teal rounded-full animate-pulse"></span>
+                        <span class="text-accent-teal font-medium">Disponible pour opportunités</span>
                     </div>
-                    
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                        <span class="block text-fox-title">
-                            Développeur Web & Mobile Fullstack
-                        </span>
+
+                    <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                        <span class="block text-txt-heading">Développeur</span>
+                        <span class="block gradient-text">Web & Mobile Fullstack</span>
                     </h1>
-                    
-                    <p class="text-lg sm:text-xl md:text-2xl text-fox-orange font-medium mb-4">
+
+                    <p class="text-lg sm:text-xl md:text-2xl text-txt-muted font-light mb-4 max-w-2xl mx-auto">
                         Applications sécurisées & déployées en production
                     </p>
-                    
-                    <p class="text-base sm:text-lg text-fox-muted max-w-2xl mx-auto mb-8 px-4">
-                        Spécialisé <span class="text-fox-title font-semibold">Laravel / PHP / MySQL / React / Next.js</span> — Je conçois, développe, sécurise et déploie des applications web métier complètes.
+
+                    <p class="text-sm sm:text-base text-txt-muted max-w-xl mx-auto mb-10 px-4">
+                        Spécialisé <span class="text-txt-heading font-semibold">Laravel · React · Next.js</span> — Du cahier des charges au déploiement VPS.
                     </p>
-                    
-                    <!-- Stats rapides -->
-                    <div class="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 mb-10 text-center">
-                        <div class="min-w-[80px]">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-fox-title">4+</div>
-                            <div class="text-fox-muted text-xs sm:text-sm">Projets en prod</div>
+
+                    <!-- Stats -->
+                    <div class="flex flex-wrap justify-center gap-8 sm:gap-12 mb-12 text-center">
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-bold font-heading text-txt-heading stat-number" data-target="4">0</div>
+                            <div class="text-txt-muted text-xs sm:text-sm mt-1">Projets en prod</div>
                         </div>
-                        <div class="min-w-[80px]">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-fox-title">Laravel</div>
-                            <div class="text-fox-muted text-xs sm:text-sm">Stack Backend</div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-bold font-heading gradient-text">Laravel</div>
+                            <div class="text-txt-muted text-xs sm:text-sm mt-1">Stack Backend</div>
                         </div>
-                        <div class="min-w-[80px]">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-fox-title">React</div>
-                            <div class="text-fox-muted text-xs sm:text-sm">Stack Frontend</div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-bold font-heading gradient-text-warm">React</div>
+                            <div class="text-txt-muted text-xs sm:text-sm mt-1">Stack Frontend</div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-10 animate-fade-in-up px-4">
-                    <a href="#projects" class="bg-fox-orange hover:bg-fox-orange-dark text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm sm:text-base">
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 px-4">
+                    <a href="#projects" class="btn-primary">
                         <i class="fas fa-briefcase"></i>
-                        Voir mes projets
+                        <span>Voir mes projets</span>
                     </a>
-                    <a href="#contact" class="bg-white text-fox-text px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold border border-fox-orange hover:border-fox-orange-dark hover:text-fox-orange transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm sm:text-base">
+                    <a href="#contact" class="btn-outline">
                         <i class="fas fa-paper-plane"></i>
-                        Me contacter
+                        <span>Me contacter</span>
                     </a>
-                    <a href="CV-Obed-ADIDO.pdf" target="_blank" rel="noopener noreferrer" class="bg-transparent text-fox-muted px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold border border-gray-300 hover:border-fox-orange hover:text-fox-orange transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base">
+                    <a href="CV-Obed-ADIDO.pdf" target="_blank" rel="noopener noreferrer" class="btn-ghost">
                         <i class="fas fa-download"></i>
-                        Télécharger CV
+                        <span>Télécharger CV</span>
                     </a>
                 </div>
-                
-                <div class="flex justify-center gap-6 animate-fade-in-up">
-                    <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="text-fox-muted hover:text-fox-orange transition-colors duration-300 transform hover:scale-110" aria-label="GitHub">
-                        <i class="fab fa-github text-2xl"></i>
+
+                <!-- Social Links -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github text-lg"></i>
                     </a>
-                    <a href="https://linkedin.com/in/obed-adido-786547355" target="_blank" rel="noopener noreferrer" class="text-fox-muted hover:text-fox-orange transition-colors duration-300 transform hover:scale-110" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin text-2xl"></i>
+                    <a href="https://linkedin.com/in/obed-adido-786547355" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin text-lg"></i>
                     </a>
-                    <a href="mailto:obedadido66@gmail.com" class="text-fox-muted hover:text-fox-orange transition-colors duration-300 transform hover:scale-110" aria-label="Email">
-                        <i class="fas fa-envelope text-2xl"></i>
+                    <a href="mailto:obedadido66@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope text-lg"></i>
                     </a>
                 </div>
             </div>
         </div>
-        
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#about" class="text-fox-muted hover:text-fox-orange transition-colors duration-300" aria-label="Défiler vers la section À Propos">
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <a href="#about" class="text-txt-muted hover:text-accent transition-colors" aria-label="Défiler vers la section À Propos">
                 <i class="fas fa-chevron-down text-2xl"></i>
             </a>
         </div>
     </section>
 
-    <!-- About Section - Courte mais forte -->
-    <section id="about" class="py-16 sm:py-20 bg-white">
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="py-20 sm:py-28 bg-dark-secondary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    <span class="text-fox-title">
-                        À Propos
-                    </span>
-                </h2>
-                <div class="w-24 h-1 bg-fox-orange mx-auto rounded-full"></div>
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-txt-heading mb-4">À Propos</h2>
+                <div class="section-divider"></div>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <div class="order-2 md:order-1">
-                    <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-fox-title">
-                        Je transforme des besoins métier en applications fonctionnelles
+
+            <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="order-2 md:order-1 reveal-left">
+                    <h3 class="font-heading text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-txt-heading">
+                        Je transforme des besoins métier en <span class="gradient-text">applications fonctionnelles</span>
                     </h3>
-                    
-                    <div class="space-y-4 text-fox-text leading-relaxed text-sm sm:text-base">
+
+                    <div class="space-y-4 text-txt-primary leading-relaxed text-sm sm:text-base">
                         <p>
-                            <strong class="text-fox-title">Ce qui me différencie :</strong> je ne me contente pas de coder. 
-                            Je comprends le besoin, je conçois une solution adaptée, je la développe proprement, 
+                            <strong class="text-txt-heading">Ce qui me différencie :</strong> je ne me contente pas de coder.
+                            Je comprends le besoin, je conçois une solution adaptée, je la développe proprement,
                             je la sécurise et je la mets en production.
                         </p>
-                        
                         <p>
-                            Mes projets sont <span class="text-fox-orange font-semibold">déployés sur VPS Linux</span>, 
-                            avec HTTPS, authentification sécurisée et gestion des rôles. 
+                            Mes projets sont <span class="text-accent-teal font-semibold">déployés sur VPS Linux</span>,
+                            avec HTTPS, authentification sécurisée et gestion des rôles.
                             Pas de démos localhost — des applications qui tournent réellement.
                         </p>
                     </div>
-                    
-                    <!-- Points clés différenciants -->
-                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 bg-fox-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-check text-fox-orange"></i>
+
+                    <!-- Key Points -->
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children">
+                        <div class="flex items-start gap-3 glass-card p-4">
+                            <div class="skill-icon-wrap flex-shrink-0">
+                                <i class="fas fa-check text-accent"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">Applications complètes</h4>
-                                <p class="text-fox-muted text-sm">Du cahier des charges au déploiement</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">Applications complètes</h4>
+                                <p class="text-txt-muted text-xs">Du cahier des charges au déploiement</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 bg-fox-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-shield-alt text-fox-orange-dark"></i>
+                        <div class="flex items-start gap-3 glass-card p-4">
+                            <div class="skill-icon-wrap flex-shrink-0" style="background:rgba(255,107,107,0.12)">
+                                <i class="fas fa-shield-alt text-accent-red"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">Sécurité intégrée</h4>
-                                <p class="text-fox-muted text-sm">Auth, CSRF, validation, HTTPS</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">Sécurité intégrée</h4>
+                                <p class="text-txt-muted text-xs">Auth, CSRF, validation, HTTPS</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 bg-fox-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-server text-fox-orange"></i>
+                        <div class="flex items-start gap-3 glass-card p-4">
+                            <div class="skill-icon-wrap flex-shrink-0" style="background:rgba(0,212,170,0.12)">
+                                <i class="fas fa-server text-accent-teal"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">En production</h4>
-                                <p class="text-fox-muted text-sm">Déploiement VPS, Linux, Nginx</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">En production</h4>
+                                <p class="text-txt-muted text-xs">Déploiement VPS, Linux, Nginx</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-10 h-10 bg-fox-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-code-branch text-fox-orange-dark"></i>
+                        <div class="flex items-start gap-3 glass-card p-4">
+                            <div class="skill-icon-wrap flex-shrink-0">
+                                <i class="fas fa-code-branch text-accent-glow"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">Code propre</h4>
-                                <p class="text-fox-muted text-sm">Git, MVC, bonnes pratiques</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">Code propre</h4>
+                                <p class="text-txt-muted text-xs">Git, MVC, bonnes pratiques</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="order-1 md:order-2 flex justify-center">
+
+                <div class="order-1 md:order-2 flex justify-center reveal-right">
                     <div class="relative">
-                        <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden border-2 border-gray-200 shadow-2xl">
+                        <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden border-2 border-accent/20 shadow-2xl shadow-accent/10">
                             <img src="bedo.jpeg" alt="Obed ADIDO - Développeur Web & Mobile Fullstack" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute -bottom-4 -right-4 bg-white border-2 border-fox-orange rounded-xl p-3 sm:p-4 shadow-xl">
+                        <div class="absolute -bottom-4 -right-4 glass px-4 py-3 rounded-xl">
                             <div class="flex items-center gap-2">
-                                <i class="fab fa-laravel text-red-500 text-xl sm:text-2xl"></i>
-                                <span class="text-fox-title font-semibold text-sm sm:text-base">Laravel</span>
+                                <i class="fab fa-laravel text-red-500 text-xl"></i>
+                                <span class="text-txt-heading font-semibold text-sm">Laravel</span>
                             </div>
                         </div>
+                        <!-- Decorative glow -->
+                        <div class="absolute -inset-4 rounded-3xl bg-accent/5 blur-2xl -z-10"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section - Structurées par catégorie -->
-    <section id="skills" class="py-16 sm:py-20 bg-fox-beige">
+    <!-- ===================== SKILLS ===================== -->
+    <section id="skills" class="py-20 sm:py-28 bg-dark-primary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    <span class="text-fox-title">
-                        Compétences Techniques
-                    </span>
-                </h2>
-                <div class="w-24 h-1 bg-fox-orange mx-auto rounded-full"></div>
-                <p class="text-fox-muted mt-4 text-sm sm:text-base">Technologies maîtrisées et utilisées en production</p>
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-txt-heading mb-4">Compétences Techniques</h2>
+                <div class="section-divider"></div>
+                <p class="text-txt-muted mt-4 text-sm sm:text-base">Technologies maîtrisées et utilisées en production</p>
             </div>
-            
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
                 <!-- Backend -->
-                <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 shadow-sm">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-fox-orange/10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-server text-fox-orange text-lg sm:text-xl"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-fox-title">Backend</h3>
+                <div class="glass-card p-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="skill-icon-wrap"><i class="fas fa-server text-accent text-lg"></i></div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading">Backend</h3>
                     </div>
-                    <div class="space-y-2 sm:space-y-3">
+                    <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fab fa-laravel text-red-500"></i>
-                                <span class="text-fox-text text-sm sm:text-base">Laravel</span>
-                            </div>
-                            <span class="text-xs bg-fox-orange/10 text-fox-orange px-2 py-1 rounded">Principal</span>
+                            <div class="flex items-center gap-2"><i class="fab fa-laravel text-red-500"></i><span class="text-sm">Laravel</span></div>
+                            <span class="skill-tag">Principal</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-php text-indigo-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">PHP 8+</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-cogs text-fox-muted"></i>
-                            <span class="text-fox-text text-sm sm:text-base">API REST</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-sitemap text-fox-orange-dark"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Architecture MVC</span>
-                        </div>
+                        <div class="flex items-center gap-2"><i class="fab fa-php text-indigo-400"></i><span class="text-sm">PHP 8+</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-cogs text-txt-muted"></i><span class="text-sm">API REST</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-sitemap text-accent-glow"></i><span class="text-sm">Architecture MVC</span></div>
                     </div>
                 </div>
-                
+
                 <!-- Frontend -->
-                <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 shadow-sm">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-fox-orange/10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-palette text-fox-orange text-lg sm:text-xl"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-fox-title">Frontend</h3>
+                <div class="glass-card p-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="skill-icon-wrap" style="background:rgba(0,212,170,0.12)"><i class="fas fa-palette text-accent-teal text-lg"></i></div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading">Frontend</h3>
                     </div>
-                    <div class="space-y-2 sm:space-y-3">
+                    <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fab fa-react text-blue-600"></i>
-                                <span class="text-fox-text text-sm sm:text-base">React</span>
-                            </div>
-                            <span class="text-xs bg-fox-orange/10 text-fox-orange px-2 py-1 rounded">Principal</span>
+                            <div class="flex items-center gap-2"><i class="fab fa-react text-blue-400"></i><span class="text-sm">React</span></div>
+                            <span class="skill-tag">Principal</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-js text-yellow-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">JavaScript / TypeScript</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-wind text-blue-600"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Tailwind CSS</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-exchange-alt text-purple-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Axios (API calls)</span>
-                        </div>
+                        <div class="flex items-center gap-2"><i class="fab fa-js text-yellow-400"></i><span class="text-sm">JavaScript / TypeScript</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-wind text-blue-400"></i><span class="text-sm">Tailwind CSS</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-exchange-alt text-purple-400"></i><span class="text-sm">Axios (API calls)</span></div>
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-mobile-alt text-blue-400"></i>
-                                <span class="text-fox-text text-sm sm:text-base">Flutter / Dart</span>
-                            </div>
-                            <span class="text-xs bg-fox-orange/10 text-fox-orange px-2 py-1 rounded">Mobile</span>
+                            <div class="flex items-center gap-2"><i class="fas fa-mobile-alt text-blue-300"></i><span class="text-sm">Flutter / Dart</span></div>
+                            <span class="skill-tag" style="background:rgba(0,212,170,0.12);color:var(--accent-secondary)">Mobile</span>
                         </div>
                     </div>
                 </div>
+
                 <!-- Base de données -->
-                <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 shadow-sm">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-fox-orange/10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-database text-fox-orange text-lg sm:text-xl"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-fox-title">Base de données</h3>
+                <div class="glass-card p-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="skill-icon-wrap" style="background:rgba(255,107,107,0.12)"><i class="fas fa-database text-accent-red text-lg"></i></div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading">Base de données</h3>
                     </div>
-                    <div class="space-y-2 sm:space-y-3">
+                    <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-database text-blue-500"></i>
-                                <span class="text-fox-text text-sm sm:text-base">MySQL</span>
-                            </div>
-                            <span class="text-xs bg-fox-orange/10 text-fox-orange px-2 py-1 rounded">Principal</span>
+                            <div class="flex items-center gap-2"><i class="fas fa-database text-blue-400"></i><span class="text-sm">MySQL</span></div>
+                            <span class="skill-tag">Principal</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-exchange-alt text-green-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Eloquent ORM</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-layer-group text-fox-orange-dark"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Migrations</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-search text-fox-muted"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Requétes optimisées</span>
-                        </div>
+                        <div class="flex items-center gap-2"><i class="fas fa-exchange-alt text-accent-teal"></i><span class="text-sm">Eloquent ORM</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-layer-group text-accent-glow"></i><span class="text-sm">Migrations</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-search text-txt-muted"></i><span class="text-sm">Requêtes optimisées</span></div>
                     </div>
                 </div>
-                
+
                 <!-- Sécurité -->
-                <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 shadow-sm">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-shield-alt text-red-500 text-lg sm:text-xl"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-fox-title">Sécurité Web</h3>
+                <div class="glass-card p-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="skill-icon-wrap" style="background:rgba(255,107,107,0.12)"><i class="fas fa-shield-alt text-accent-red text-lg"></i></div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading">Sécurité Web</h3>
                     </div>
-                    <div class="space-y-2 sm:space-y-3">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-user-lock text-red-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Authentification</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-key text-yellow-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Protection CSRF</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Validation des données</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-users-cog text-fox-orange"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Gestion des rôles</span>
-                        </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2"><i class="fas fa-user-lock text-accent-red"></i><span class="text-sm">Authentification</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-key text-yellow-400"></i><span class="text-sm">Protection CSRF</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-accent-teal"></i><span class="text-sm">Validation des données</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-users-cog text-accent"></i><span class="text-sm">Gestion des rôles</span></div>
                     </div>
                 </div>
-                
+
                 <!-- Déploiement -->
-                <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 shadow-sm">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-cloud-upload-alt text-green-500 text-lg sm:text-xl"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-fox-title">Déploiement</h3>
+                <div class="glass-card p-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="skill-icon-wrap" style="background:rgba(0,212,170,0.12)"><i class="fas fa-cloud-upload-alt text-accent-teal text-lg"></i></div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading">Déploiement</h3>
                     </div>
-                    <div class="space-y-2 sm:space-y-3">
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-linux text-fox-title"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Linux / VPS</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-lock text-green-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">HTTPS / SSL</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-server text-fox-orange"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Nginx / Apache</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-terminal text-fox-muted"></i>
-                            <span class="text-fox-text text-sm sm:text-base">SSH / CLI</span>
-                        </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2"><i class="fab fa-linux text-txt-primary"></i><span class="text-sm">Linux / VPS</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-lock text-accent-teal"></i><span class="text-sm">HTTPS / SSL</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-server text-accent"></i><span class="text-sm">Nginx / Apache</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-terminal text-txt-muted"></i><span class="text-sm">SSH / CLI</span></div>
                     </div>
                 </div>
-                
+
                 <!-- Outils -->
-                <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 shadow-sm">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-fox-orange/10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-tools text-fox-orange text-lg sm:text-xl"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-fox-title">Outils</h3>
+                <div class="glass-card p-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="skill-icon-wrap"><i class="fas fa-tools text-accent text-lg"></i></div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading">Outils</h3>
                     </div>
-                    <div class="space-y-2 sm:space-y-3">
-                        <div class="flex items-center gap-2">
-                            <i class="fab fa-git-alt text-orange-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Git / GitHub</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-code text-blue-500"></i>
-                            <span class="text-fox-text text-sm sm:text-base">VS Code</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-paper-plane text-fox-orange"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Postman / Insomnia</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-paint-brush text-blue-400"></i>
-                            <span class="text-fox-text text-sm sm:text-base">Canva</span>
-                        </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2"><i class="fab fa-git-alt text-orange-400"></i><span class="text-sm">Git / GitHub</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-code text-blue-400"></i><span class="text-sm">VS Code</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-paper-plane text-accent"></i><span class="text-sm">Postman / Insomnia</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-paint-brush text-blue-300"></i><span class="text-sm">Canva</span></div>
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fab fa-jira text-blue-600"></i>
-                                <span class="text-fox-text text-sm sm:text-base">Méthodologie SCRUM / Jira</span>
-                            </div>
-                            <span class="text-xs bg-fox-orange/10 text-fox-orange px-2 py-1 rounded">Agile</span>
+                            <div class="flex items-center gap-2"><i class="fab fa-jira text-blue-500"></i><span class="text-sm">SCRUM / Jira</span></div>
+                            <span class="skill-tag" style="background:rgba(0,212,170,0.12);color:var(--accent-secondary)">Agile</span>
                         </div>
                     </div>
                 </div>
@@ -485,455 +402,372 @@
         </div>
     </section>
 
-    <!-- Projects Section - CŒUR DU PORTFOLIO -->
-    <section id="projects" class="py-16 sm:py-20 bg-fox-beige">
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="py-20 sm:py-28 bg-dark-secondary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    <span class="text-fox-title">
-                        Projets Réalisés
-                    </span>
-                </h2>
-                <div class="w-24 h-1 bg-fox-orange mx-auto rounded-full"></div>
-                <p class="text-fox-muted mt-4 text-sm sm:text-base">Applications complètes développées, sécurisées et déployées</p>
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-txt-heading mb-4">Projets Réalisés</h2>
+                <div class="section-divider"></div>
+                <p class="text-txt-muted mt-4 text-sm sm:text-base">Applications complètes développées, sécurisées et déployées</p>
             </div>
-            
-            <div class="space-y-8 sm:space-y-12">
-                
+
+            <div class="space-y-10">
+
                 <!-- Projet 1 : Mini ERP -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-fox-orange/50 transition-all duration-300">
+                <div class="project-card reveal">
                     <div class="grid lg:grid-cols-2 gap-0">
-                        <div class="bg-gradient-to-br from-fox-orange to-fox-orange-dark p-6 sm:p-8 lg:p-12 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                            <div class="text-center">
-                                <i class="fas fa-building text-white text-4xl sm:text-6xl mb-4 opacity-90"></i>
-                                <p class="text-white/80 text-base sm:text-lg">Interface de gestion PME</p>
+                        <div class="project-visual bg-gradient-to-br from-accent to-purple-700 p-8 sm:p-12">
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-building text-white text-5xl sm:text-7xl mb-4 opacity-90"></i>
+                                <p class="text-white/70 text-base sm:text-lg">Interface de gestion PME</p>
                             </div>
                         </div>
                         <div class="p-6 sm:p-8 lg:p-12">
                             <div class="flex items-center gap-3 mb-4">
-                                <span class="px-3 py-1 bg-fox-orange/20 text-fox-orange rounded-full text-xs sm:text-sm font-medium">
+                                <span class="px-3 py-1 rounded-full text-xs sm:text-sm font-medium" style="background:rgba(0,212,170,0.12);color:var(--accent-secondary)">
                                     <i class="fas fa-check-circle mr-1"></i>En production
                                 </span>
                             </div>
-                            <h3 class="text-xl sm:text-2xl font-bold text-fox-title mb-4">Mini ERP - Gestion PME</h3>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-orange uppercase tracking-wide mb-2">Probléme métier</h4>
-                                <p class="text-fox-muted text-sm">PME qui gérait ses opérations (clients, factures, stocks, trésorerie) sur Excel avec risques d'erreurs et manque de visibilité.</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-txt-heading font-heading mb-4">Mini ERP - Gestion PME</h3>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Problème métier</h4>
+                                <p class="text-txt-muted text-sm">PME qui gérait ses opérations (clients, factures, stocks, trésorerie) sur Excel avec risques d'erreurs et manque de visibilité.</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">Solution apportée</h4>
-                                <p class="text-fox-text text-sm">Application web centralisée avec tableau de bord, gestion des clients, facturation automatisée, suivi des stocks et reporting.</p>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent-teal uppercase tracking-widest mb-2">Solution apportée</h4>
+                                <p class="text-txt-primary text-sm">Application web centralisée avec tableau de bord, gestion des clients, facturation automatisée, suivi des stocks et reporting.</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-muted uppercase tracking-wide mb-2">Fonctionnalités clés</h4>
-                                <ul class="text-fox-muted space-y-1 text-xs sm:text-sm">
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Gestion clients et fournisseurs</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Facturation avec génération PDF</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Tableau de bord analytique</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Multi-utilisateurs avec rôles</li>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-txt-muted uppercase tracking-widest mb-2">Fonctionnalités clés</h4>
+                                <ul class="text-txt-muted space-y-1.5 text-xs sm:text-sm">
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Gestion clients et fournisseurs</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Facturation avec génération PDF</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Tableau de bord analytique</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Multi-utilisateurs avec rôles</li>
                                 </ul>
                             </div>
-                            
-                            <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
-                                <span class="px-2 sm:px-3 py-1 bg-red-500/20 text-red-500 rounded-full text-xs sm:text-sm">Laravel</span>
-                                <span class="px-2 sm:px-3 py-1 bg-fox-orange/20 text-fox-orange rounded-full text-xs sm:text-sm">MySQL</span>
-                                <span class="px-2 sm:px-3 py-1 bg-blue-500/20 text-blue-600 rounded-full text-xs sm:text-sm">Tailwind</span>
-                                <span class="px-2 sm:px-3 py-1 bg-green-500/20 text-green-600 rounded-full text-xs sm:text-sm">VPS Linux</span>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="project-tag" style="background:rgba(255,107,107,0.12);color:var(--accent-tertiary)">Laravel</span>
+                                <span class="project-tag" style="background:rgba(108,99,255,0.12);color:var(--accent)">MySQL</span>
+                                <span class="project-tag" style="background:rgba(59,130,246,0.12);color:#60a5fa">Tailwind</span>
+                                <span class="project-tag" style="background:rgba(0,212,170,0.12);color:var(--accent-secondary)">VPS Linux</span>
                             </div>
-                            
-                            <div class="flex gap-4">
-                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm">
-                                    <i class="fab fa-github"></i>
-                                    Code source
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm ml-4">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Voir en direct
-                                </a>
+                            <div class="flex gap-5">
+                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent hover:text-accent-glow transition-colors text-sm"><i class="fab fa-github"></i>Code source</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent-teal hover:text-accent-teal/80 transition-colors text-sm"><i class="fas fa-external-link-alt"></i>Voir en direct</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Projet 2 : Gestion Projets Universitaires -->
-                <div class="bg-fox-beige rounded-2xl overflow-hidden border border-gray-200 hover:border-fox-orange/50 transition-all duration-300 shadow-sm">
+
+                <!-- Projet 2 : Plateforme Projets Scolaires -->
+                <div class="project-card reveal">
                     <div class="grid lg:grid-cols-2 gap-0">
-                        <div class="p-6 sm:p-8 lg:p-12 order-2 lg:order-1 bg-white">
+                        <div class="p-6 sm:p-8 lg:p-12 order-2 lg:order-1">
                             <div class="flex items-center gap-3 mb-4">
-                                <span class="px-3 py-1 bg-green-500/10 text-green-600 rounded-full text-xs sm:text-sm font-medium">
+                                <span class="px-3 py-1 rounded-full text-xs sm:text-sm font-medium" style="background:rgba(0,212,170,0.12);color:var(--accent-secondary)">
                                     <i class="fas fa-check-circle mr-1"></i>En production
                                 </span>
                             </div>
-                            <h3 class="text-xl sm:text-2xl font-bold text-fox-title mb-4">Plateforme Projets Scolaires</h3>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-orange uppercase tracking-wide mb-2">Probléme métier</h4>
-                                <p class="text-fox-muted text-sm">Université qui manquait d'un outil centralisé pour gérer les projets étudiants, les groupes, les soutenances et le suivi des encadrants.</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-txt-heading font-heading mb-4">Plateforme Projets Scolaires</h3>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Problème métier</h4>
+                                <p class="text-txt-muted text-sm">Université qui manquait d'un outil centralisé pour gérer les projets étudiants, les groupes, les soutenances et le suivi des encadrants.</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-orange-dark uppercase tracking-wide mb-2">Solution apportée</h4>
-                                <p class="text-fox-text text-sm">Plateforme compléte permettant aux étudiants de soumettre leurs projets, aux enseignants de suivre l'avancement, et à l'administration de planifier les soutenances.</p>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent-teal uppercase tracking-widest mb-2">Solution apportée</h4>
+                                <p class="text-txt-primary text-sm">Plateforme complète permettant aux étudiants de soumettre leurs projets, aux enseignants de suivre l'avancement, et à l'administration de planifier les soutenances.</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-muted uppercase tracking-wide mb-2">Fonctionnalités clés</h4>
-                                <ul class="text-fox-muted space-y-1 text-xs sm:text-sm">
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Portails distincts (étudiant, prof, admin)</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Soumission et validation de projets</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Planification des soutenances</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Systéme de notation intégré</li>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-txt-muted uppercase tracking-widest mb-2">Fonctionnalités clés</h4>
+                                <ul class="text-txt-muted space-y-1.5 text-xs sm:text-sm">
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Portails distincts (étudiant, prof, admin)</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Soumission et validation de projets</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Planification des soutenances</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Système de notation intégré</li>
                                 </ul>
                             </div>
-                            
-                            <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
-                                <span class="px-2 sm:px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs sm:text-sm">Laravel</span>
-                                <span class="px-2 sm:px-3 py-1 bg-blue-500/10 text-blue-500 rounded-full text-xs sm:text-sm">MySQL</span>
-                                <span class="px-2 sm:px-3 py-1 bg-yellow-500/10 text-yellow-600 rounded-full text-xs sm:text-sm">JavaScript</span>
-                                <span class="px-2 sm:px-3 py-1 bg-purple-500/10 text-purple-600 rounded-full text-xs sm:text-sm">Auth Roles</span>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="project-tag" style="background:rgba(255,107,107,0.12);color:var(--accent-tertiary)">Laravel</span>
+                                <span class="project-tag" style="background:rgba(59,130,246,0.12);color:#60a5fa">MySQL</span>
+                                <span class="project-tag" style="background:rgba(234,179,8,0.12);color:#facc15">JavaScript</span>
+                                <span class="project-tag" style="background:rgba(168,85,247,0.12);color:#c084fc">Auth Roles</span>
                             </div>
-                            
-                            <div class="flex gap-4">
-                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm">
-                                    <i class="fab fa-github"></i>
-                                    Code source
-                                </a>
-                                <a href="https://wintech.company/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm ml-4">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Voir en direct
-                                </a>
+                            <div class="flex gap-5">
+                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent hover:text-accent-glow transition-colors text-sm"><i class="fab fa-github"></i>Code source</a>
+                                <a href="https://wintech.company/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent-teal hover:text-accent-teal/80 transition-colors text-sm"><i class="fas fa-external-link-alt"></i>Voir en direct</a>
                             </div>
                         </div>
-                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-6 sm:p-8 lg:p-12 flex items-center justify-center min-h-[200px] sm:min-h-[300px] order-1 lg:order-2">
-                            <div class="text-center">
-                                <i class="fas fa-graduation-cap text-white text-4xl sm:text-6xl mb-4 opacity-90"></i>
-                                <p class="text-white/80 text-base sm:text-lg">Gestion académique</p>
+                        <div class="project-visual bg-gradient-to-br from-blue-600 to-indigo-800 p-8 sm:p-12 order-1 lg:order-2">
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-graduation-cap text-white text-5xl sm:text-7xl mb-4 opacity-90"></i>
+                                <p class="text-white/70 text-base sm:text-lg">Gestion académique</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Projet 3 : Plateforme recherche type Scholar (React + Next.js) -->
-                <div class="bg-fox-beige rounded-2xl overflow-hidden border border-gray-200 hover:border-fox-orange/50 transition-all duration-300 shadow-sm">
+
+                <!-- Projet 3 : Plateforme Recherche Scientifique -->
+                <div class="project-card reveal">
                     <div class="grid lg:grid-cols-2 gap-0">
-                        <div class="bg-gradient-to-br from-green-500 to-teal-600 p-6 sm:p-8 lg:p-12 flex items-center justify-center min-h-[200px] sm:min-h-[300px]">
-                            <div class="text-center">
-                                <i class="fas fa-search text-white text-4xl sm:text-6xl mb-4 opacity-90"></i>
-                                <p class="text-white/80 text-base sm:text-lg">Recherche documentaire</p>
+                        <div class="project-visual bg-gradient-to-br from-emerald-600 to-teal-800 p-8 sm:p-12">
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-search text-white text-5xl sm:text-7xl mb-4 opacity-90"></i>
+                                <p class="text-white/70 text-base sm:text-lg">Recherche documentaire</p>
                             </div>
                         </div>
-                        <div class="p-6 sm:p-8 lg:p-12 bg-white">
-                            <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
-                                <span class="px-3 py-1 bg-cyan-500/10 text-cyan-600 rounded-full text-xs sm:text-sm font-medium">
+                        <div class="p-6 sm:p-8 lg:p-12">
+                            <div class="flex flex-wrap items-center gap-2 mb-4">
+                                <span class="px-3 py-1 rounded-full text-xs sm:text-sm font-medium" style="background:rgba(59,130,246,0.12);color:#60a5fa">
                                     <i class="fab fa-react mr-1"></i>React + NestJS
                                 </span>
-                                <span class="px-3 py-1 bg-fox-orange/10 text-fox-orange rounded-full text-xs sm:text-sm font-medium">
+                                <span class="px-3 py-1 rounded-full text-xs sm:text-sm font-medium" style="background:rgba(108,99,255,0.12);color:var(--accent)">
                                     <i class="fas fa-code mr-1"></i>Projet fullstack
                                 </span>
                             </div>
-                            <h3 class="text-xl sm:text-2xl font-bold text-fox-title mb-4">Plateforme Recherche Scientifique</h3>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-orange uppercase tracking-wide mb-2">Probléme métier</h4>
-                                <p class="text-fox-muted text-sm">Besoin d'un outil local pour indexer et rechercher des publications scientifiques avec filtres avancés (auteur, date, mots-clés).</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-txt-heading font-heading mb-4">Plateforme Recherche Scientifique</h3>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Problème métier</h4>
+                                <p class="text-txt-muted text-sm">Besoin d'un outil local pour indexer et rechercher des publications scientifiques avec filtres avancés (auteur, date, mots-clés).</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-orange-dark uppercase tracking-wide mb-2">Solution apportée</h4>
-                                <p class="text-fox-text text-sm">Plateforme web inspirée de Google Scholar avec architecture <strong class="text-fox-title">React</strong> côté frontend et <strong class="text-fox-title">API REST NestJS</strong> cété backend. Communication via <strong class="text-fox-title">Axios</strong>.</p>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent-teal uppercase tracking-widest mb-2">Solution apportée</h4>
+                                <p class="text-txt-primary text-sm">Plateforme web inspirée de Google Scholar avec architecture <strong class="text-txt-heading">React</strong> côté frontend et <strong class="text-txt-heading">API REST NestJS</strong> côté backend. Communication via <strong class="text-txt-heading">Axios</strong>.</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-muted uppercase tracking-wide mb-2">Fonctionnalités clés</h4>
-                                <ul class="text-fox-muted space-y-1 text-xs sm:text-sm">
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Recherche full-text avec pagination</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Filtres multi-critéres dynamiques</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Appels API via Axios (GET, POST)</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Export citations (BibTeX)</li>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-txt-muted uppercase tracking-widest mb-2">Fonctionnalités clés</h4>
+                                <ul class="text-txt-muted space-y-1.5 text-xs sm:text-sm">
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Recherche full-text avec pagination</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Filtres multi-critères dynamiques</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Appels API via Axios (GET, POST)</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Export citations (BibTeX)</li>
                                 </ul>
                             </div>
-                            
-                            <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
-                                <span class="px-2 sm:px-3 py-1 bg-cyan-500/10 text-cyan-600 rounded-full text-xs sm:text-sm">React</span>
-                                <span class="px-2 sm:px-3 py-1 bg-gray-100 text-fox-title rounded-full text-xs sm:text-sm">NestJS</span>
-                                <span class="px-2 sm:px-3 py-1 bg-purple-500/10 text-purple-600 rounded-full text-xs sm:text-sm">Axios</span>
-                                <span class="px-2 sm:px-3 py-1 bg-blue-500/10 text-blue-500 rounded-full text-xs sm:text-sm">MySQL</span>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="project-tag" style="background:rgba(59,130,246,0.12);color:#60a5fa">React</span>
+                                <span class="project-tag" style="background:rgba(136,136,160,0.12);color:var(--txt-primary)">NestJS</span>
+                                <span class="project-tag" style="background:rgba(168,85,247,0.12);color:#c084fc">Axios</span>
+                                <span class="project-tag" style="background:rgba(59,130,246,0.12);color:#60a5fa">MySQL</span>
                             </div>
-                            
-                            <div class="flex gap-4">
-                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm">
-                                    <i class="fab fa-github"></i>
-                                    Code source
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm ml-4">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Voir en direct
-                                </a>
+                            <div class="flex gap-5">
+                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent hover:text-accent-glow transition-colors text-sm"><i class="fab fa-github"></i>Code source</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent-teal hover:text-accent-teal/80 transition-colors text-sm"><i class="fas fa-external-link-alt"></i>Voir en direct</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Projet 4 : Application Gestion Financiére -->
-                <div class="bg-fox-beige rounded-2xl overflow-hidden border border-gray-200 hover:border-fox-orange/50 transition-all duration-300 shadow-sm">
+
+                <!-- Projet 4 : Application Gestion Financière -->
+                <div class="project-card reveal">
                     <div class="grid lg:grid-cols-2 gap-0">
-                        <div class="p-6 sm:p-8 lg:p-12 order-2 lg:order-1 bg-white">
+                        <div class="p-6 sm:p-8 lg:p-12 order-2 lg:order-1">
                             <div class="flex items-center gap-3 mb-4">
-                                <span class="px-3 py-1 bg-green-500/10 text-green-600 rounded-full text-xs sm:text-sm font-medium">
+                                <span class="px-3 py-1 rounded-full text-xs sm:text-sm font-medium" style="background:rgba(0,212,170,0.12);color:var(--accent-secondary)">
                                     <i class="fas fa-check-circle mr-1"></i>En production
                                 </span>
                             </div>
-                            <h3 class="text-xl sm:text-2xl font-bold text-fox-title mb-4">Application Gestion Financiére</h3>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-orange uppercase tracking-wide mb-2">Probléme métier</h4>
-                                <p class="text-fox-muted text-sm">Entreprise ayant besoin d'un outil pour suivre ses transactions, gérer les dépenses par catégorie et générer des rapports financiers.</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-txt-heading font-heading mb-4">Application Gestion Financière</h3>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Problème métier</h4>
+                                <p class="text-txt-muted text-sm">Entreprise ayant besoin d'un outil pour suivre ses transactions, gérer les dépenses par catégorie et générer des rapports financiers.</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-orange-dark uppercase tracking-wide mb-2">Solution apportée</h4>
-                                <p class="text-fox-text text-sm">Application compléte avec intégration d'agrégateur de paiement (PayPlus), tableau de bord temps réel et rapports analytiques.</p>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-accent-teal uppercase tracking-widest mb-2">Solution apportée</h4>
+                                <p class="text-txt-primary text-sm">Application complète avec intégration d'agrégateur de paiement (PayPlus), tableau de bord temps réel et rapports analytiques.</p>
                             </div>
-                            
-                            <div class="mb-4 sm:mb-6">
-                                <h4 class="text-xs sm:text-sm font-semibold text-fox-muted uppercase tracking-wide mb-2">Fonctionnalités clés</h4>
-                                <ul class="text-fox-muted space-y-1 text-xs sm:text-sm">
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Intégration API paiement</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Dashboard avec graphiques</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Catégorisation des dépenses</li>
-                                    <li><i class="fas fa-check text-fox-orange mr-2"></i>Export rapports PDF/Excel</li>
+                            <div class="mb-5">
+                                <h4 class="text-xs font-semibold text-txt-muted uppercase tracking-widest mb-2">Fonctionnalités clés</h4>
+                                <ul class="text-txt-muted space-y-1.5 text-xs sm:text-sm">
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Intégration API paiement</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Dashboard avec graphiques</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Catégorisation des dépenses</li>
+                                    <li><i class="fas fa-check text-accent mr-2"></i>Export rapports PDF/Excel</li>
                                 </ul>
                             </div>
-                            
-                            <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
-                                <span class="px-2 sm:px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-xs sm:text-sm">Laravel</span>
-                                <span class="px-2 sm:px-3 py-1 bg-yellow-500/10 text-yellow-600 rounded-full text-xs sm:text-sm">JavaScript</span>
-                                <span class="px-2 sm:px-3 py-1 bg-pink-500/10 text-pink-600 rounded-full text-xs sm:text-sm">Charts.js</span>
-                                <span class="px-2 sm:px-3 py-1 bg-green-500/10 text-green-600 rounded-full text-xs sm:text-sm">PayPlus API</span>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="project-tag" style="background:rgba(255,107,107,0.12);color:var(--accent-tertiary)">Laravel</span>
+                                <span class="project-tag" style="background:rgba(234,179,8,0.12);color:#facc15">JavaScript</span>
+                                <span class="project-tag" style="background:rgba(236,72,153,0.12);color:#f472b6">Charts.js</span>
+                                <span class="project-tag" style="background:rgba(0,212,170,0.12);color:var(--accent-secondary)">PayPlus API</span>
                             </div>
-                            
-                            <div class="flex gap-4">
-                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm">
-                                    <i class="fab fa-github"></i>
-                                    Code source
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-fox-orange hover:text-fox-orange-dark transition-colors text-sm ml-4">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Voir en direct
-                                </a>
+                            <div class="flex gap-5">
+                                <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent hover:text-accent-glow transition-colors text-sm"><i class="fab fa-github"></i>Code source</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-accent-teal hover:text-accent-teal/80 transition-colors text-sm"><i class="fas fa-external-link-alt"></i>Voir en direct</a>
                             </div>
                         </div>
-                        <div class="bg-gradient-to-br from-amber-500 to-orange-600 p-6 sm:p-8 lg:p-12 flex items-center justify-center min-h-[200px] sm:min-h-[300px] order-1 lg:order-2">
-                            <div class="text-center">
-                                <i class="fas fa-chart-line text-white text-4xl sm:text-6xl mb-4 opacity-90"></i>
-                                <p class="text-white/80 text-base sm:text-lg">Analytics & Reporting</p>
+                        <div class="project-visual bg-gradient-to-br from-amber-500 to-orange-700 p-8 sm:p-12 order-1 lg:order-2">
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-chart-line text-white text-5xl sm:text-7xl mb-4 opacity-90"></i>
+                                <p class="text-white/70 text-base sm:text-lg">Analytics & Reporting</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
-    
-    <!-- Method Section - Différenciant -->
-    <section id="method" class="py-16 sm:py-20 bg-fox-beige">
+
+    <!-- ===================== METHOD ===================== -->
+    <section id="method" class="py-20 sm:py-28 bg-dark-primary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    <span class="text-fox-title">
-                        Ma Méthode de Travail
-                    </span>
-                </h2>
-                <div class="w-24 h-1 bg-fox-orange mx-auto rounded-full"></div>
-                <p class="text-fox-muted mt-4 text-sm sm:text-base">Une approche structurée, du besoin à la mise en production</p>
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-txt-heading mb-4">Ma Méthode de Travail</h2>
+                <div class="section-divider"></div>
+                <p class="text-txt-muted mt-4 text-sm sm:text-base">Une approche structurée, du besoin à la mise en production</p>
             </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
-                <!-- étape 1 -->
-                <div class="relative">
-                    <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 h-full shadow-sm">
-                        <div class="w-10 h-10 bg-fox-orange rounded-full flex items-center justify-center text-fox-title font-bold mb-4">1</div>
-                        <h3 class="text-lg font-bold text-fox-title mb-2">Analyse</h3>
-                        <p class="text-fox-muted text-sm">Comprendre le besoin métier, les contraintes et les objectifs du projet.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5 stagger-children">
+                <div class="timeline-step">
+                    <div class="glass-card p-5 sm:p-6 h-full">
+                        <div class="timeline-dot bg-accent text-white mb-4">1</div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading mb-2">Analyse</h3>
+                        <p class="text-txt-muted text-sm">Comprendre le besoin métier, les contraintes et les objectifs du projet.</p>
                     </div>
-                    <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-gray-400">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
+                    <div class="timeline-connector hidden md:block"></div>
                 </div>
-                
-                <!-- étape 2 -->
-                <div class="relative">
-                    <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 h-full shadow-sm">
-                        <div class="w-10 h-10 bg-fox-orange-dark rounded-full flex items-center justify-center text-fox-title font-bold mb-4">2</div>
-                        <h3 class="text-lg font-bold text-fox-title mb-2">Conception</h3>
-                        <p class="text-fox-muted text-sm">Rédaction du cahier des charges, modélisation BDD et architecture.</p>
+                <div class="timeline-step">
+                    <div class="glass-card p-5 sm:p-6 h-full">
+                        <div class="timeline-dot bg-accent-glow text-white mb-4">2</div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading mb-2">Conception</h3>
+                        <p class="text-txt-muted text-sm">Rédaction du cahier des charges, modélisation BDD et architecture.</p>
                     </div>
-                    <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-gray-400">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
+                    <div class="timeline-connector hidden md:block"></div>
                 </div>
-                
-                <!-- étape 3 -->
-                <div class="relative">
-                    <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 h-full shadow-sm">
-                        <div class="w-10 h-10 bg-fox-orange-light rounded-full flex items-center justify-center text-fox-title font-bold mb-4">3</div>
-                        <h3 class="text-lg font-bold text-fox-title mb-2">Développement</h3>
-                        <p class="text-fox-muted text-sm">Codage propre avec Laravel, tests fonctionnels, versioning Git.</p>
+                <div class="timeline-step">
+                    <div class="glass-card p-5 sm:p-6 h-full">
+                        <div class="timeline-dot text-white mb-4" style="background:var(--accent-secondary)">3</div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading mb-2">Développement</h3>
+                        <p class="text-txt-muted text-sm">Codage propre avec Laravel, tests fonctionnels, versioning Git.</p>
                     </div>
-                    <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-gray-400">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
+                    <div class="timeline-connector hidden md:block"></div>
                 </div>
-                
-                <!-- étape 4 -->
-                <div class="relative">
-                    <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 h-full shadow-sm">
-                        <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-fox-title font-bold mb-4">4</div>
-                        <h3 class="text-lg font-bold text-fox-title mb-2">Sécurisation</h3>
-                        <p class="text-fox-muted text-sm">Auth, validation, CSRF, gestion des rôles et permissions.</p>
+                <div class="timeline-step">
+                    <div class="glass-card p-5 sm:p-6 h-full">
+                        <div class="timeline-dot text-white mb-4" style="background:var(--accent-tertiary)">4</div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading mb-2">Sécurisation</h3>
+                        <p class="text-txt-muted text-sm">Auth, validation, CSRF, gestion des rôles et permissions.</p>
                     </div>
-                    <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-gray-400">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
+                    <div class="timeline-connector hidden md:block"></div>
                 </div>
-                
-                <!-- étape 5 -->
-                <div class="relative">
-                    <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 h-full shadow-sm">
-                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-fox-title font-bold mb-4">5</div>
-                        <h3 class="text-lg font-bold text-fox-title mb-2">Déploiement</h3>
-                        <p class="text-fox-muted text-sm">Mise en production sur VPS Linux, HTTPS, configuration serveur.</p>
+                <div class="timeline-step">
+                    <div class="glass-card p-5 sm:p-6 h-full">
+                        <div class="timeline-dot bg-accent-teal text-white mb-4">5</div>
+                        <h3 class="text-lg font-bold text-txt-heading font-heading mb-2">Déploiement</h3>
+                        <p class="text-txt-muted text-sm">Mise en production sur VPS Linux, HTTPS, configuration serveur.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section - Simple et efficace -->
-    <section id="contact" class="py-16 sm:py-20 bg-fox-beige">
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="py-20 sm:py-28 bg-dark-secondary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                    <span class="text-fox-title">
-                        Contact
-                    </span>
-                </h2>
-                <div class="w-24 h-1 bg-fox-orange mx-auto rounded-full"></div>
-                <p class="text-fox-muted mt-4 text-sm sm:text-base">Intéressé par mon profil ? Discutons de votre projet.</p>
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-txt-heading mb-4">Contact</h2>
+                <div class="section-divider"></div>
+                <p class="text-txt-muted mt-4 text-sm sm:text-base">Intéressé par mon profil ? Discutons de votre projet.</p>
             </div>
-            
-            <!-- Disponibilité Banner -->
-            <div class="max-w-3xl mx-auto mb-8 sm:mb-12">
-                <div class="bg-white border border-fox-orange/30 rounded-xl p-4 sm:p-6 text-center">
+
+            <!-- Availability Banner -->
+            <div class="max-w-3xl mx-auto mb-10 reveal">
+                <div class="glass p-5 sm:p-6 rounded-2xl text-center">
                     <div class="flex items-center justify-center gap-3 mb-3">
-                        <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                        <span class="text-base sm:text-lg font-semibold text-fox-title">Disponible pour opportunités</span>
+                        <span class="w-3 h-3 bg-accent-teal rounded-full animate-pulse"></span>
+                        <span class="text-base sm:text-lg font-semibold text-txt-heading font-heading">Disponible pour opportunités</span>
                     </div>
-                    <p class="text-fox-text text-sm sm:text-base">CDI — Alternance — Licence Pro — Stage — Mission freelance</p>
+                    <p class="text-txt-muted text-sm sm:text-base">CDI — Alternance — Licence Pro — Stage — Mission freelance</p>
                 </div>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+
+            <div class="grid md:grid-cols-2 gap-10 lg:gap-16 max-w-5xl mx-auto">
                 <!-- Contact Info -->
-                <div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-6 text-fox-title">Coordonnées</h3>
-                    <div class="space-y-4">
-                        <a href="mailto:obedadido66@gmail.com" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-fox-orange transition-all duration-300 group">
-                            <div class="w-12 h-12 bg-fox-orange/20 rounded-lg flex items-center justify-center group-hover:bg-fox-orange/30 transition-colors">
-                                <i class="fas fa-envelope text-fox-orange text-xl"></i>
+                <div class="reveal-left">
+                    <h3 class="text-lg sm:text-xl font-bold mb-6 text-txt-heading font-heading">Coordonnées</h3>
+                    <div class="space-y-3">
+                        <a href="mailto:obedadido66@gmail.com" class="contact-card group">
+                            <div class="contact-icon" style="background:rgba(108,99,255,0.15)">
+                                <i class="fas fa-envelope text-accent text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">Email</h4>
-                                <p class="text-fox-muted text-sm">obedadido66@gmail.com</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">Email</h4>
+                                <p class="text-txt-muted text-xs sm:text-sm">obedadido66@gmail.com</p>
                             </div>
                         </a>
-                        
-                        <a href="https://linkedin.com/in/obed-adido-786547355" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-cyan-500 transition-all duration-300 group">
-                            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
-                                <i class="fab fa-linkedin text-blue-600 text-xl"></i>
+
+                        <a href="https://linkedin.com/in/obed-adido-786547355" target="_blank" rel="noopener noreferrer" class="contact-card group">
+                            <div class="contact-icon" style="background:rgba(59,130,246,0.15)">
+                                <i class="fab fa-linkedin text-blue-400 text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">LinkedIn</h4>
-                                <p class="text-fox-muted text-sm">linkedin.com/in/obed-adido-786547355</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">LinkedIn</h4>
+                                <p class="text-txt-muted text-xs sm:text-sm">linkedin.com/in/obed-adido</p>
                             </div>
                         </a>
-                        
-                        <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-gray-500 transition-all duration-300 group">
-                            <div class="w-12 h-12 bg-gray-500/20 rounded-lg flex items-center justify-center group-hover:bg-gray-500/30 transition-colors">
-                                <i class="fab fa-github text-fox-text text-xl"></i>
+
+                        <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="contact-card group">
+                            <div class="contact-icon" style="background:rgba(136,136,160,0.15)">
+                                <i class="fab fa-github text-txt-primary text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">GitHub</h4>
-                                <p class="text-fox-muted text-sm">github.com/Bedo227</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">GitHub</h4>
+                                <p class="text-txt-muted text-xs sm:text-sm">github.com/Bedo227</p>
                             </div>
                         </a>
-                        
-                        <a href="https://wa.me/22954032414" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 transition-all duration-300 group">
-                            <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:bg-green-500/30 transition-colors">
-                                <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+
+                        <a href="https://wa.me/22954032414" target="_blank" rel="noopener noreferrer" class="contact-card group">
+                            <div class="contact-icon" style="background:rgba(0,212,170,0.15)">
+                                <i class="fab fa-whatsapp text-accent-teal text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-fox-title">WhatsApp</h4>
-                                <p class="text-fox-muted text-sm">+229 54 03 24 14</p>
+                                <h4 class="font-semibold text-txt-heading text-sm">WhatsApp</h4>
+                                <p class="text-txt-muted text-xs sm:text-sm">+229 54 03 24 14</p>
                             </div>
                         </a>
                     </div>
-                    
-                    <div class="mt-6 sm:mt-8 p-4 bg-white rounded-xl border border-gray-200">
-                        <div class="flex items-center gap-3 mb-2">
-                            <i class="fas fa-map-marker-alt text-fox-orange"></i>
-                            <span class="font-semibold text-fox-title">Localisation</span>
+
+                    <div class="mt-6 glass-card p-4">
+                        <div class="flex items-center gap-3 mb-1">
+                            <i class="fas fa-map-marker-alt text-accent"></i>
+                            <span class="font-semibold text-txt-heading text-sm">Localisation</span>
                         </div>
-                        <p class="text-fox-muted text-sm">Cotonou, Bénin — Disponible en remote</p>
+                        <p class="text-txt-muted text-sm ml-7">Cotonou, Bénin — Disponible en remote</p>
                     </div>
                 </div>
-                
+
                 <!-- Contact Form -->
-                <div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-6 text-fox-title">Envoyer un message</h3>
+                <div class="reveal-right">
+                    <h3 class="text-lg sm:text-xl font-bold mb-6 text-txt-heading font-heading">Envoyer un message</h3>
                     <form id="contact-form" class="space-y-4">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-fox-text mb-2">Nom complet</label>
-                            <input type="text" id="name" name="name" required placeholder="Votre nom"
-                                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-fox-title placeholder-fox-muted focus:outline-none focus:border-fox-orange transition-colors duration-300">
+                            <label for="name" class="block text-sm font-medium text-txt-primary mb-2">Nom complet</label>
+                            <input type="text" id="name" name="name" required placeholder="Votre nom" class="form-input">
                         </div>
-                        
                         <div>
-                            <label for="email" class="block text-sm font-medium text-fox-text mb-2">Email professionnel</label>
-                            <input type="email" id="email" name="email" required placeholder="votre@email.com"
-                                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-fox-title placeholder-fox-muted focus:outline-none focus:border-fox-orange transition-colors duration-300">
+                            <label for="email" class="block text-sm font-medium text-txt-primary mb-2">Email professionnel</label>
+                            <input type="email" id="email" name="email" required placeholder="votre@email.com" class="form-input">
                         </div>
-                        
                         <div>
-                            <label for="subject" class="block text-sm font-medium text-fox-text mb-2">Sujet</label>
-                            <select id="subject" name="subject" required
-                                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-fox-title focus:outline-none focus:border-fox-orange transition-colors duration-300">
-                                <option value="" class="bg-white">Sélectionnez un sujet</option>
-                                <option value="Opportunité CDI" class="bg-white">Opportunité CDI</option>
-                                <option value="Alternance / Stage" class="bg-white">Alternance / Stage</option>
-                                <option value="Mission Freelance" class="bg-white">Mission Freelance</option>
-                                <option value="Question technique" class="bg-white">Question technique</option>
-                                <option value="Autre" class="bg-white">Autre</option>
+                            <label for="subject" class="block text-sm font-medium text-txt-primary mb-2">Sujet</label>
+                            <select id="subject" name="subject" required class="form-input">
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="Opportunité CDI">Opportunité CDI</option>
+                                <option value="Alternance / Stage">Alternance / Stage</option>
+                                <option value="Mission Freelance">Mission Freelance</option>
+                                <option value="Question technique">Question technique</option>
+                                <option value="Autre">Autre</option>
                             </select>
                         </div>
-                        
                         <div>
-                            <label for="message" class="block text-sm font-medium text-fox-text mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre besoin ou opportunité..."
-                                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-fox-title placeholder-fox-muted focus:outline-none focus:border-fox-orange transition-colors duration-300 resize-none"></textarea>
+                            <label for="message" class="block text-sm font-medium text-txt-primary mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre besoin ou opportunité..." class="form-input resize-none"></textarea>
                         </div>
-                        
-                        <button type="submit"
-                            class="w-full bg-fox-orange hover:bg-fox-orange-dark text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-fox-orange/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <button type="submit" class="btn-primary w-full py-4">
                             <span id="btn-text">Envoyer le message</span>
                             <i id="btn-loading" class="fas fa-spinner fa-spin hidden"></i>
                             <i class="fas fa-paper-plane" id="btn-icon"></i>
                         </button>
-                        
                         <div id="form-message" class="hidden"></div>
                     </form>
                 </div>
@@ -941,37 +775,37 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-fox-title border-t border-gray-700 py-6 sm:py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-dark-primary">
+        <div class="footer-separator"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="text-center md:text-left">
-                    <p class="text-fox-muted text-sm sm:text-base">
-                        &copy; 2026 <span class="text-fox-orange font-semibold">Obed ADIDO</span> — Développeur Web & Mobile Fullstack
+                    <p class="text-txt-muted text-sm">
+                        &copy; 2026 <span class="gradient-text font-semibold">Obed ADIDO</span> — Développeur Web & Mobile Fullstack
                     </p>
                 </div>
-                <div class="flex gap-4">
-                    <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="text-fox-muted hover:text-fox-orange transition-colors" aria-label="GitHub">
-                        <i class="fab fa-github text-xl"></i>
+                <div class="flex gap-3">
+                    <a href="https://github.com/Bedo227" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://linkedin.com/in/obed-adido-786547355" target="_blank" rel="noopener noreferrer" class="text-fox-muted hover:text-blue-600 transition-colors" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin text-xl"></i>
+                    <a href="https://linkedin.com/in/obed-adido-786547355" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:obedadido66@gmail.com" class="text-fox-muted hover:text-fox-orange transition-colors" aria-label="Email">
-                        <i class="fas fa-envelope text-xl"></i>
+                    <a href="mailto:obedadido66@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scroll-top" class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 bg-fox-orange hover:bg-fox-orange-dark text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-fox-orange/30 transition-all duration-300 transform hover:scale-110 opacity-0 invisible" aria-label="Retour en haut">
-        <i class="fas fa-arrow-up text-lg sm:text-xl"></i>
+    <!-- Scroll to Top -->
+    <button id="scroll-top" class="scroll-top-btn opacity-0 invisible" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up text-lg"></i>
     </button>
 
     <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>
-
