@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Développeur - Modèle IT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Librairie pour télécharger directement en PDF (html2pdf.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        :root {
+            --editor-bg: #f3f4f6;
+            --editor-sidebar-bg: #ffffff;
+            --editor-border: #e5e7eb;
+            --primary-color: #3b82f6;
+            --text-color: #1f2937;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--editor-bg);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Panneau Éditeur */
+        .editor-panel {
+            width: 400px;
+            background: var(--editor-sidebar-bg);
+            border-right: 1px solid var(--editor-border);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+        }
+
+        .editor-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--editor-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 18px;
+            color: #dc2626;
+        }
+
+        .editor-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #efefef;
+            padding-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-print {
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-print:hover {
+            background-color: #b91c1c;
+        }
+
+        /* Panneau Prévisualisation */
+        .preview-panel {
+            flex: 1;
+            background-color: #525659;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Styles du CV IT */
+        .cv-document {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            display: flex;
+            --cv-primary: #111827; 
+            --cv-secondary: #4f46e5;
+            --cv-text-main: #374151;
+            --cv-text-light: #4b5563;
+            --cv-bg-sidebar: #f8fafc;
+            --cv-white: #ffffff;
+            --cv-accent: #6366f1;
+        }
+
+        /* Sidebar CV */
+        .cv-sidebar {
+            width: 35%;
+            background-color: var(--cv-bg-sidebar);
+            padding: 40px 30px;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .cv-sidebar-section { 
+            margin-bottom: 35px; 
+        }
+
+        .cv-sidebar-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--cv-secondary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--cv-secondary);
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+
+        .cv-contact-item {
+            font-size: 12px;
+            margin-bottom: 12px;
+            color: var(--cv-text-light);
+            word-wrap: break-word;
+        }
+
+        .cv-contact-item strong {
+            display: block;
+            color: var(--cv-text-main);
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .cv-skill-tag {
+            display: inline-block;
+            background: var(--cv-white);
+            border: 1px solid #e0e7ff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin: 0 4px 8px 0;
+            color: var(--cv-secondary);
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .cv-skill-tag:nth-child(odd) {
+            background-color: #f5f3ff;
+        }
+
+        /* Main Content CV */
+        .cv-main {
+            width: 65%;
+            padding: 50px 40px;
+        }
+
+        .cv-header { 
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 20px;
+        }
+
+        .cv-name {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--cv-primary);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .cv-job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--cv-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .cv-section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--cv-primary);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+            margin-top: 25px;
+        }
+
+        .cv-section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e0e7ff;
+            margin-left: 15px;
+        }
+
+        .cv-summary {
+            font-size: 13.5px;
+            color: var(--cv-text-light);
+            margin-bottom: 25px;
+            text-align: justify;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+        
+        .cv-item {
+            margin-bottom: 5px;
+        }
+
+        .cv-exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .cv-exp-company {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--cv-text-main);
+        }
+
+        .cv-exp-date {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--cv-white);
+            background: var(--cv-secondary);
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        .cv-exp-role {
+            font-style: italic;
+            font-size: 12px;
+            color: var(--cv-accent);
+            margin-bottom: 8px;
+        }
+        
+        .cv-exp-details {
+            font-size: 12.5px;
+            color: var(--cv-text-main);
+            padding-left: 15px;
+            border-left: 2px solid #e0e7ff;
+            white-space: pre-line;
+            line-height: 1.5;
+        }
+
+        .cv-certification-item {
+            font-size: 12.5px;
+            color: var(--cv-text-main);
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        .cv-certification-item i {
+            color: var(--cv-secondary);
+            margin-right: 8px;
+        }
+
+        /* Styles pour les sections IT spécifiques */
+        .medical-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @media print {
+            .editor-panel { display: none; }
+            .preview-panel { 
+                padding: 0; 
+                background: white; 
+                display: block; 
+                overflow: visible;
+                height: auto;
+            }
+            .app-container { height: auto; display: block; }
+            .cv-document { 
+                box-shadow: none; 
+                margin: 0; 
+                width: 100%; 
+                min-height: auto;
+            }
+            body { background: white; height: auto; overflow: visible; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Panneau Éditeur -->
+    <aside class="editor-panel" id="editor-sidebar" data-html2canvas-ignore="true">
+        <div class="editor-header">
+            <div class="brand" style="color: #4f46e5;"><i class="fas fa-code"></i> CV Développeur</div>
+            <button class="btn-print" onclick="downloadPDF()" style="background-color: #4f46e5;">
+                <i class="fas fa-download"></i> Télécharger
+            </button>
+        </div>
+        
+        <div class="editor-content">
+            <div class="form-section-title">Informations Personnelles</div>
+            <div class="form-group">
+                <label>Nom complet</label>
+                <input type="text" id="input-name" value="Obed ADIDO" oninput="updateCV('name', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Titre professionnel</label>
+                <input type="text" id="input-job" value="Développeur Web & Mobile Fullstack" oninput="updateCV('job', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Spécialité</label>
+                <select id="input-specialty" onchange="updateCV('specialty', this.value)">
+                    <option value="Développeur Fullstack">Développeur Fullstack</option>
+                    <option value="Développeur Backend">Développeur Backend</option>
+                    <option value="Développeur Frontend">Développeur Frontend</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Statut professionnel</label>
+                <select id="input-status" onchange="updateCV('status', this.value)">
+                    <option value="Disponible">Disponible</option>
+                    <option value="En poste">En poste</option>
+                    <option value="Freelance">Freelance</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Objectif professionnel</label>
+                <textarea id="input-summary" rows="5" oninput="updateCV('summary', this.value)">Développeur Web & Mobile Fullstack spécialisé Laravel, PHP, MySQL, React, Nest.js. Conception, développement et déploiement d'applications web sécurisées en production.</textarea>
+            </div>
+
+            <div class="form-section-title">Coordonnées</div>
+            <div class="form-group">
+                <label>Date de naissance</label>
+                <input type="date" id="input-birthdate" value="2002-06-30" oninput="updateCV('birthdate', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Localisation</label>
+                <input type="text" id="input-location" value="Cotonou, Bénin" oninput="updateCV('location', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="tel" id="input-phone" value="+229 01 54 03 24 14" oninput="updateCV('phone', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="input-email" value="obedadido66@gmail.com" oninput="updateCV('email', this.value)">
+            </div>
+
+            <div class="form-section-title">Compétences Techniques</div>
+            <div class="form-group">
+                <label>Compétences (séparées par des virgules)</label>
+                <textarea id="input-skills" rows="6" oninput="updateSkills(this.value)">Laravel, PHP, API REST, Architecture MVC, React, JavaScript / TypeScript, Tailwind CSS, Axios, Flutter / Dart, MySQL, Eloquent ORM, Déploiement VPS Linux, Git / GitHub</textarea>
+            </div>
+
+            <div class="form-section-title">Formations & Certifications</div>
+            <div class="form-group">
+                <label>Diplôme principal</label>
+                <input type="text" id="input-diploma" value="Licence en Système en Informatique et Logiciel (SIL)" oninput="updateCV('diploma', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Année d'obtention</label>
+                <input type="text" id="input-diploma-year" value="encours" oninput="updateCV('diploma-year', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Établissement</label>
+                <input type="text" id="input-school" value="UATM GASA FORMATION" oninput="updateCV('school', this.value)">
+            </div>
+
+            <div class="form-section-title">Expérience Professionnelle</div>
+            <div class="form-group">
+                <label>Projet / Entreprise</label>
+                <input type="text" id="input-exp1-company" value="Mini ERP - Gestion PME" oninput="updateCV('exp1-company', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Période</label>
+                <input type="text" id="input-exp1-date" value="Récent" oninput="updateCV('exp1-date', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Rôle</label>
+                <input type="text" id="input-exp1-role" value="Développeur Fullstack" oninput="updateCV('exp1-role', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Responsabilités & Réalisations</label>
+                <textarea id="input-exp1-desc" rows="4" oninput="updateCV('exp1-desc', this.value)">- Application web centralisée avec tableau de bord
+- Gestion clients et fournisseurs
+- Facturation avec génération PDF
+- Multi-utilisateurs avec rôles
+- Stack: Laravel, MySQL, Tailwind, VPS Linux</textarea>
+            </div>
+            
+            <p style="font-size: 11px; color: #888; margin-top: 20px; text-align: center;">
+                <i class="fas fa-info-circle"></i> Modèle spécialisé pour professionnels de l'IT
+            </p>
+        </div>
+    </aside>
+
+    <!-- Panneau Prévisualisation -->
+    <div class="preview-panel">
+        <div class="cv-document">
+            <!-- Sidebar CV -->
+            <aside class="cv-sidebar">
+                <div class="cv-sidebar-section">
+                    <h3 class="cv-sidebar-title"><i class="fas fa-user"></i> Contact</h3>
+                    <div class="cv-contact-item">
+                        <strong>Date de naissance</strong>
+                        <span id="cv-birthdate">01/01/2000</span>
+                    </div>
+                    <div class="cv-contact-item">
+                        <strong>Localisation</strong>
+                        <span id="cv-location">Cotonou, Bénin</span>
+                    </div>
+                    <div class="cv-contact-item">
+                        <strong>Téléphone</strong>
+                        <span id="cv-phone">+229 01 54 03 24 14</span>
+                    </div>
+                    <div class="cv-contact-item">
+                        <strong>Email</strong>
+                        <span id="cv-email">obedadido66@gmail.com</span>
+                    </div>
+                    <div class="cv-contact-item">
+                        <strong>Statut</strong>
+                        <span id="cv-status">Disponible</span>
+                    </div>
+                </div>
+
+                <div class="cv-sidebar-section">
+                    <h3 class="cv-sidebar-title"><i class="fas fa-graduation-cap"></i> Diplôme</h3>
+                    <div class="cv-contact-item">
+                        <strong id="cv-diploma">Licence en Système en Informatique et Logiciel (SIL)</strong>
+                        <span id="cv-diploma-year">encours</span><br>
+                        <span id="cv-school">UATM GASA FORMATION</span>
+                    </div>
+                </div>
+
+                <div class="cv-sidebar-section">
+                    <h3 class="cv-sidebar-title"><i class="fas fa-code"></i> Compétences</h3>
+                    <div id="cv-skills-container">
+                        <div class="cv-skill-tag">Laravel</div>
+                        <div class="cv-skill-tag">PHP</div>
+                        <div class="cv-skill-tag">API REST</div>
+                        <div class="cv-skill-tag">React</div>
+                    </div>
+                </div>
+
+                <div class="cv-sidebar-section">
+                    <h3 class="cv-sidebar-title"><i class="fas fa-laptop-code"></i> Spécialité</h3>
+                    <div class="cv-contact-item">
+                        <span id="cv-specialty">Développeur Fullstack</span>
+                        <span class="medical-badge" style="background: linear-gradient(135deg, #6b21a8, #8b5cf6);">IT</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content CV -->
+            <main class="cv-main">
+                <header class="cv-header">
+                    <h1 class="cv-name" id="cv-name">Obed<br>ADIDO</h1>
+                    <div class="cv-job-title" id="cv-job">Développeur Web & Mobile Fullstack</div>
+                </header>
+
+                <section>
+                    <h3 class="cv-section-title"><i class="fas fa-bullseye"></i> Objectif Professionnel</h3>
+                    <p class="cv-summary" id="cv-summary">
+                        Développeur Web & Mobile Fullstack spécialisé Laravel, PHP, MySQL, React, Nest.js. Conception, développement et déploiement d'applications web sécurisées en production.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="cv-section-title"><i class="fas fa-briefcase"></i> Expérience Professionnelle</h3>
+                    
+                    <div class="cv-item">
+                        <div class="cv-exp-header">
+                            <span class="cv-exp-company" id="cv-exp1-company">Mini ERP - Gestion PME</span>
+                            <span class="cv-exp-date" id="cv-exp1-date">Récent</span>
+                        </div>
+                        <div class="cv-exp-role" id="cv-exp1-role">Développeur Fullstack</div>
+                        <div class="cv-exp-details" id="cv-exp1-desc">
+- Application web centralisée avec tableau de bord
+- Gestion clients et fournisseurs
+- Facturation avec génération PDF
+- Multi-utilisateurs avec rôles
+- Stack: Laravel, MySQL, Tailwind, VPS Linux
+                        </div>
+                    </div>
+                    
+                    <div class="cv-item" style="margin-top: 25px;">
+                        <div class="cv-exp-header">
+                            <span class="cv-exp-company">Plateforme Projets Scolaires</span>
+                            <span class="cv-exp-date">Projet</span>
+                        </div>
+                        <div class="cv-exp-role">Développeur Fullstack</div>
+                        <div class="cv-exp-details">
+- Portails distincts (étudiant, prof, admin)
+- Soumission et validation de projets
+- Planification des soutenances
+- Système de notation intégré
+- En production
+                        </div>
+                    </div>
+
+                </section>
+
+                <section>
+                    <h3 class="cv-section-title"><i class="fas fa-project-diagram"></i> Autres Projets Réalisés</h3>
+                    <div class="cv-certification-item">
+                        <i class="fas fa-check-circle"></i> <strong>Plateforme Recherche Scientifique</strong>: React + NestJS, Recherche full-text, axios.
+                    </div>
+                    <div class="cv-certification-item">
+                        <i class="fas fa-check-circle"></i> <strong>Application Gestion Financière</strong>: Laravel, API paiement, Dashboard, génération PDF.
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fonction simple pour mettre à jour le texte
+    function updateCV(id, value) {
+        const element = document.getElementById('cv-' + id);
+        if (element) {
+            // Formatage spécial pour la date de naissance
+            if (id === 'birthdate') {
+                const date = new Date(value);
+                if (!isNaN(date.getTime())) {
+                    // Format français : JJ/MM/AAAA
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const year = date.getFullYear();
+                    element.innerText = `${day}/${month}/${year}`;
+                } else {
+                    element.innerText = value;
+                }
+            } else {
+                element.innerText = value;
+            }
+        }
+    }
+
+    // Gestion spéciale pour les compétences (tags)
+    function updateSkills(value) {
+        const container = document.getElementById('cv-skills-container');
+        const skills = value.split(',');
+        
+        container.innerHTML = ''; // Vide la liste actuelle
+        
+        skills.forEach(skill => {
+            if (skill.trim()) {
+                const tag = document.createElement('div');
+                tag.className = 'cv-skill-tag';
+                tag.innerText = skill.trim();
+                container.appendChild(tag);
+            }
+        });
+    }
+
+    // Initialisation au chargement
+    window.onload = function() {
+        // Déclenche une mise à jour initiale pour les compétences
+        updateSkills(document.getElementById('input-skills').value);
+        // Mise à jour initiale pour la date de naissance
+        updateCV('birthdate', document.getElementById('input-birthdate').value);
+        // Mise à jour initiale pour la spécialité
+        updateCV('specialty', document.getElementById('input-specialty').value);
+        // Mise à jour initiale pour le statut
+        updateCV('status', document.getElementById('input-status').value);
+        // Mise à jour initiale pour le diplôme
+        updateCV('diploma', document.getElementById('input-diploma').value);
+        updateCV('diploma-year', document.getElementById('input-diploma-year').value);
+        updateCV('school', document.getElementById('input-school').value);
+    }
+
+    // Fonction de téléchargement PDF direct
+    function downloadPDF() {
+        const element = document.querySelector('.cv-document');
+        const name = document.getElementById('input-name').value.replace(/ /g, '_');
+        
+        const opt = {
+            margin:       0,
+            filename:     'CV_' + name + '.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // Cache temporairement le bouton s'il posait problème et génère le PDF
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+
+</body>
+</html>
